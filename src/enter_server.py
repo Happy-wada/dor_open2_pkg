@@ -44,7 +44,8 @@ class DoorServer():
             stop_time = 0
             stop_start = 0
             stop_end = 0
-        
+            print'start door open'
+            rospy.sleep(0.5)
             while not rospy.is_shutdown():
                 #安全距離のときに実行
                 if self.front_laser_dist >= safe_dist:
@@ -54,7 +55,7 @@ class DoorServer():
                 elif self.front_laser_dist <= safe_dist:
                     stop_start = time.time()
                     print('please open door')
-                    rospy.sleep(0.1)
+                    rospy.sleep(3.0)
                     stop_end = time.time() - stop_start
                     stop_time += stop_end
                     
